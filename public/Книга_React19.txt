@@ -172,6 +172,27 @@ To create a production build, use npm run build.
 webpack compiled successfully
 
 
+Ошибки на странице 47 подглавы 1.8
+
+Написано:
+
+        <Route path='/' element={<App />} >
+                        <Route index={true} element={<TodoList list={todos} />                         </Route>        
+                        <Route path='add' element={<TodoAdd />}> 
+        </Route> 
+
+
+Но должны быть закрывающие теги </Router> для каждого тэга Router
+
+        <Route path='/' element={<App />} >
+                        <Route
+                            index={true} element={<TodoList list={todos} /> } >
+                        </Route>        
+                        <Route
+                            path='add' element={<TodoAdd />}> 
+                        </Route>
+        </Route> 
+
 
 
 
