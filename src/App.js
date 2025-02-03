@@ -1,40 +1,24 @@
-import {useState} from 'react';
-import initialTodos from './todos.js';
+import { useState } from 'react';
 
 import { Outlet, NavLink } from 'react-router-dom';
 
+
 export default function App() {
-  const [ showMenu, setShowMenu ] = useState(false);
-  const handleBurgerClick = evt => {
-    evt.PreventDefault();
-    setShowMenu(!showMenu);
-  };
+    const [showMenu, setShowMenu] = useState(false);
 
-  const [todos, setTodos] = useState(initialTodos);
-
-  const add = deed => {
-    setTodos([...todos, deed]);
-  }
-     
-  const del = key => {
-    const newTodos = todos.filter(current => current.key !== key);
-    setTodos(newTodos);
-  }
-  const setDone = key => {
-    const newTodos = [...todos];
-    const deed = newTodos.find(current => current.key === key);
-    if (deed)
-      deed.done = true;
-    setTodos(newTodos);
-  };
+    const handleBurgerClick = evt => {
+        evt.preventDefault();
+        setShowMenu(!showMenu);
+    };
+  
  
     return (
         <div className="container">
             <nav className="navbar is-light">
                 <div className="navbar-brand">
                  <NavLink 
-                      to="/"
-                      claccName={({isActive }) => 
+                     to="/"
+                     claccName={({ isActive }) => 
                          'navbar-item is-uppercase' +
                          (isActive ? ' is-active' : '')
                        }

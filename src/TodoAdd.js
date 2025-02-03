@@ -1,12 +1,15 @@
 import { useState } from 'react';
-export default function TodoAdd(props) {
-    const [ title, setTitle ] = useState('');
-    const [ desc, setDescr ] = useState('');
-    const [ image, setImage ] = useState('');
-    
+import { useSubmit } from 'react-router-dom';
+
+export default function TodoAdd() {
+    const [title, setTitle] = useState('');
+    const [desc, setDesc] = useState('');
+    const [image, setImage] = useState('');
+    const submit = useSubmit();
+
     const handleImageChange = evt => {
         const cFiles = evt.target.files;
-        if (cFiles.length > 0 ) {
+        if (cFiles.length > 0) {
             const fileReader = new FileReader();
             fileReader.onload = () => {
                 setImage(fileReader.result);
@@ -15,20 +18,19 @@ export default function TodoAdd(props) {
         } else
             setImage('');
     };
+
     const handleFormSubmit = evt => {
         evt.preventDefault();
-        const newDeed = {title, desc, image, done: false};
-        const date = new Date();
-        newDeed.createdAt = date.toLocaleString();
-        newDeed.key = date.getTime();
-        props.add(newDeed);
-        evt.target.reset();
+        submit({title, desc, image},
+               {action: '/add', method: 'post'})
     };
+
     const handleFormReset = () => {
         setTitle('');
-        setDescr('');
+        setDesc('');
         setImage('');
     };
+    
     return (
         <section>
             <h1>Создание нового дела</h1>
@@ -43,8 +45,8 @@ export default function TodoAdd(props) {
                  <div className="field">
                       <label className="label">Примечание</label>
                       <div className="control">
-                          <textarea classNAme="textarea" value={desc}
-                           onChange={e => setDescr(e.target.value)} />
+                          <textarea className="textarea" value={desc}
+                           onChange={e => setDesc(e.target.value)} />
                      </div>
                  </div>   
                      <div className="field">
