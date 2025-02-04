@@ -1,6 +1,27 @@
 import { redirect } from 'react-router-dom';
 
 import todos from './todos.js';
+// весь этот код с 4 по 24 строки относится ко второй главе
+//import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; 
+//
+//
+//import firebaseApp from './firebase.js';  // этот код относится ко второй главе
+//
+//const auth = getAuth(firebaseApp);   // этот код относится ко второй главе
+//
+//export async function register({ request}) {   // этот код относится ко второй главе
+//    const fd = await request.formData();
+//    try {
+//        const oUC = await createUserWithEmailAndPassword(
+//            auth,
+//            fd.get('email'), fd.get('password')
+//        );
+//        return redirect('/');
+//    }
+//    catch(err) {
+//        return err.code;
+//    }
+//}                                           //  этот код относится ко второй главе
 
 export function getTodos() {
     return todos;
