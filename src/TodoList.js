@@ -14,7 +14,7 @@ export default function TodoList() {
 
     return (
         <section>
-             <h1> Дела </h1>
+             <h1>Дела</h1>
              <table className="table is-hoverable is-fullwidth">
                  <tbody>
                      {list.map(item => (
