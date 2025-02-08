@@ -35,7 +35,7 @@ export default function App() {
                          (isActive ? ' is-active' : '')
                        }
                     >
-                      {user ? user.email : '  Todos'}
+                       {user ? user.email : '__Todos'}
                    </NavLink> 
                    <a href="/" 
                        className={showMenu ?
